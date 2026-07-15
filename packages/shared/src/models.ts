@@ -1,64 +1,40 @@
 export type ModelPricing = {
-  inputEurPerMillionTokens: number;
-  outputEurPerMillionTokens: number;
+  inputUsdPerMillionTokens: number;
+  outputUsdPerMillionTokens: number;
 };
 
-export type SupportedProvider = "anthropic" | "openai";
+export type SupportedProvider = "openrouter";
 
 type SupportedChatModelDefinition = {
   id: string;
   provider: SupportedProvider;
-  pricing: ModelPricing;
+  pricing?: ModelPricing;
 };
 
 export const SUPPORTED_CHAT_MODELS = [
   {
-    id: "claude-sonnet-4-6",
-    provider: "anthropic",
-    pricing: {
-      inputEurPerMillionTokens: 3,
-      outputEurPerMillionTokens: 15,
-    },
+    id: "openrouter/free",
+    provider: "openrouter",
   },
   {
-    id: "claude-haiku-4-5",
-    provider: "anthropic",
-    pricing: {
-      inputEurPerMillionTokens: 1,
-      outputEurPerMillionTokens: 5,
-    },
+    id: "google/gemini-2.5-pro",
+    provider: "openrouter",
   },
   {
-    id: "claude-opus-4-6",
-    provider: "anthropic",
-    pricing: {
-      inputEurPerMillionTokens: 5,
-      outputEurPerMillionTokens: 25,
-    },
+    id: "google/gemini-2.5-flash:free",
+    provider: "openrouter",
   },
   {
-    id: "gpt-5.4",
-    provider: "openai",
-    pricing: {
-      inputEurPerMillionTokens: 2.5,
-      outputEurPerMillionTokens: 15,
-    },
+    id: "deepseek/deepseek-chat-v3:free",
+    provider: "openrouter",
   },
   {
-    id: "gpt-5.4-mini",
-    provider: "openai",
-    pricing: {
-      inputEurPerMillionTokens: 0.75,
-      outputEurPerMillionTokens: 4.5,
-    },
+    id: "qwen/qwen3-coder:free",
+    provider: "openrouter",
   },
   {
-    id: "gpt-5.4-nano",
-    provider: "openai",
-    pricing: {
-      inputEurPerMillionTokens: 0.2,
-      outputEurPerMillionTokens: 1.25,
-    },
+    id: "meta-llama/llama-3.3-70b-instruct",
+    provider: "openrouter",
   },
 ] as const satisfies readonly SupportedChatModelDefinition[];
 
@@ -69,4 +45,4 @@ export function findSupportedChatModel(modelId: string) {
   return SUPPORTED_CHAT_MODELS.find((model) => model.id === modelId);
 }
 
-export const DEFAULT_CHAT_MODEL_ID: SupportedChatModelId = "claude-opus-4-6";
+export const DEFAULT_CHAT_MODEL_ID: SupportedChatModelId = "openrouter/free";

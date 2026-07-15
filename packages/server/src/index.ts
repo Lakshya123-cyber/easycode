@@ -2,7 +2,9 @@ import { Hono } from "hono";
 import { sentry } from "@sentry/hono/bun";
 import * as Sentry from "@sentry/hono/bun";
 import { HTTPException } from "hono/http-exception";
+
 import sessions from "./routes/sessions";
+import chat from "./routes/chat";
 
 const app = new Hono();
 
@@ -11,12 +13,7 @@ app.use(
     dsn: "https://b2f08120ae0ecf389a9f3ef7eb7f35b9@o4506925821132800.ingest.us.sentry.io/4511723457150976",
     tracesSampleRate: 1.0,
     enableLogs: true,
-    dataCollection: {
-      // To disable sending user data and HTTP bodies, uncomment the lines below. For more info visit:
-      // https://docs.sentry.io/platforms/javascript/guides/hono/configuration/options/#dataCollection
-      // userInfo: false,
-      // httpBodies: [],
-    },
+    dataCollection: {},
   }),
 );
 
@@ -56,7 +53,7 @@ app.onError((error, c) => {
   return c.json({ error: "Internal server error" }, 500);
 });
 
-const routes = app.route("/sessions", sessions);
+const routes = app.route("/sessions", sessions).route("/chat", chat);
 
 export type AppType = typeof routes;
 

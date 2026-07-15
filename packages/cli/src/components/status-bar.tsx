@@ -10,7 +10,7 @@ export function StatusBar() {
       <text attributes={TextAttributes.DIM} fg={colors.dimSeparator}>
         &#8250;
       </text>
-      <text>opus-4-6</text>
+      <text>openrouter/free</text>
     </box>
   );
 }
