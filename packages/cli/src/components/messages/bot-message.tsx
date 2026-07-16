@@ -55,13 +55,13 @@ export function BotMessage({
             </text>
 
             <text attributes={TextAttributes.DIM} fg={colors.dimSeparator}>
-              &gt;
+              &#8250;
             </text>
             <text attributes={TextAttributes.DIM}>{model}</text>
             {(duration || interrupted) && (
               <>
                 <text attributes={TextAttributes.DIM} fg={colors.dimSeparator}>
-                  &gt;
+                  &#8250;
                 </text>
                 <text attributes={TextAttributes.DIM}>
                   {interrupted ? "interrupted" : duration}
