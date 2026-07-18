@@ -1,5 +1,5 @@
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
-
+import type { ProviderOptions } from "@ai-sdk/provider-utils";
 import {
   findSupportedChatModel,
   type SupportedChatModel,
@@ -17,14 +17,27 @@ export type ResolvedModel = {
   model: LanguageModel;
   provider: SupportedProvider;
   modelId: SupportedChatModelId;
+  providerOptions?: ProviderOptions;
 };
 
+function assertUnsupportedProvider(provider: never): never {
+  throw new Error(`Unsupported provider: ${provider}`);
+}
+
 function resolveSupportedChatModel(model: SupportedChatModel): ResolvedModel {
-  return {
-    model: openrouter.chat(model.id),
-    provider: "openrouter",
-    modelId: model.id,
-  };
+  const provider = model.provider;
+
+  switch (provider) {
+    case "openrouter":
+      return {
+        model: openrouter.chat(model.id),
+        provider: "openrouter",
+        modelId: model.id,
+      };
+
+    default:
+      return assertUnsupportedProvider(provider);
+  }
 }
 
 export function isSupportedChatModel(
