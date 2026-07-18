@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 # EasyCode – A Full-Stack CLI & Backend Toolkit
 
 **EasyCode** is a modern, full-stack monorepo built with **Bun** and **TypeScript** that empowers developers with a powerful CLI tool and a robust backend server. Designed for efficiency and ease of use, it provides an interactive terminal experience backed by a dedicated server for data management and processing.
