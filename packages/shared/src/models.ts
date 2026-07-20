@@ -21,15 +21,15 @@ export const SUPPORTED_CHAT_MODELS = [
     provider: "openrouter",
   },
   {
-    id: "google/gemini-2.5-flash:free",
+    id: "google/gemini-2.5-flash",
     provider: "openrouter",
   },
   {
-    id: "deepseek/deepseek-chat-v3:free",
+    id: "deepseek/deepseek-chat-v3",
     provider: "openrouter",
   },
   {
-    id: "qwen/qwen3-coder:free",
+    id: "qwen/qwen3-coder",
     provider: "openrouter",
   },
   {
