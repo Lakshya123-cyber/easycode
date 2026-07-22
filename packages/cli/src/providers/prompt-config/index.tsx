@@ -1,15 +1,16 @@
 import { createContext, useContext, useState, useCallback } from "react";
 import type { ReactNode } from "react";
 import {
+  Mode,
   DEFAULT_CHAT_MODEL_ID,
+  type ModeType,
   type SupportedChatModelId,
 } from "@easycode/shared";
-import { Mode } from "@easycode/database/enums";
 
 type PromptConfigContextValue = {
-  mode: Mode;
+  mode: ModeType;
   toggleMode: () => void;
-  setMode: (mode: Mode) => void;
+  setMode: (mode: ModeType) => void;
   model: SupportedChatModelId;
   setModel: (model: SupportedChatModelId) => void;
 };
@@ -35,7 +36,7 @@ type PromptConfigProviderProps = {
 };
 
 export function PromptConfigProvider({ children }: PromptConfigProviderProps) {
-  const [mode, setMode] = useState<Mode>(Mode.BUILD);
+  const [mode, setMode] = useState<ModeType>(Mode.BUILD);
   const [model, setModel] = useState<SupportedChatModelId>(
     DEFAULT_CHAT_MODEL_ID,
   );

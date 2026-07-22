@@ -1,11 +1,10 @@
-import type { Mode } from "@easycode/database/enums";
+import type { ModeType } from "@easycode/shared";
 
 type SystemPromptParams = {
-  cwd: string | null;
-  mode: Mode;
+  mode: ModeType;
 };
 
-export function buildSystemPrompt({ cwd, mode }: SystemPromptParams): string {
+export function buildSystemPrompt({ mode }: SystemPromptParams): string {
   const parts: string[] = [];
 
   parts.push(`You are an expert software engineer working as a coding assistant inside a terminal application.
@@ -13,10 +12,6 @@ export function buildSystemPrompt({ cwd, mode }: SystemPromptParams): string {
     - **PLAN** - Read-only analysis and planning. No file modifications.
     - **BUILD** - Full implementation with read and write tools.
         `);
-
-  if (cwd) {
-    parts.push(`\nThe user's project directory is: ${cwd}`);
-  }
 
   if (mode === "PLAN") {
     parts.push(
@@ -41,7 +36,7 @@ export function buildSystemPrompt({ cwd, mode }: SystemPromptParams): string {
     );
   }
 
-  if (cwd && mode === "PLAN") {
+  if (mode === "PLAN") {
     parts.push(
       `
         ## Tool Usage
@@ -59,7 +54,7 @@ export function buildSystemPrompt({ cwd, mode }: SystemPromptParams): string {
     );
   }
 
-  if (cwd && mode === "BUILD") {
+  if (mode === "BUILD") {
     parts.push(
       `
         ## Tool Usage
