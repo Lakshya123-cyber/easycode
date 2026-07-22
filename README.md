@@ -1,44 +1,122 @@
-# EasyCode – A Full-Stack CLI & Backend Toolkit
+# EasyCode
 
-**EasyCode** is a modern, full-stack monorepo built with **Bun** and **TypeScript** that empowers developers with a powerful CLI tool and a robust backend server. Designed for efficiency and ease of use, it provides an interactive terminal experience backed by a dedicated server for data management and processing.
+**EasyCode** is an AI-powered command-line coding assistant that helps you write, edit, explain, and manage code directly from your terminal.
 
-## Core Features
-
-- **Interactive CLI Interface** – Navigate and manage tasks seamlessly from your terminal.
-- **Dedicated Backend Server** – Handles all server-side logic, data processing, and persistence.
-- **Modular Monorepo Architecture** – Built with Bun workspaces, featuring:
-  - `packages/cli` – The command-line interface for user interaction.
-  - `packages/server` – The backend server for API and business logic.
-  - `packages/database` – Centralized data layer for consistent storage.
-  - `packages/shared` – Common types and utilities shared across the stack.
-- **Type-Safe Development** – Leverages TypeScript throughout for reliability and maintainability.
-- **Fast & Modern Toolchain** – Powered by [Bun](https://bun.sh), delivering rapid installation, execution, and testing.
-
-## Getting Started
-
-```bash
-# Install dependencies
-bun install
-
-# Start the CLI interface
-bun run cli
-
-# Start the backend server
-bun run server
-
-# Run tests
-bun test
-```
-
-## Development
-
-For detailed development instructions, workspace setup, and contribution guidelines, please refer to the individual `README.md` files within each package:
-
-- [`packages/cli/README.md`](packages/cli/README.md)
-- [`packages/server/README.md`](packages/server/README.md)
-- [`packages/database/README.md`](packages/database/README.md)
-- [`packages/shared/README.md`](packages/shared/README.md)
+Built with **Bun**, **TypeScript**, and **OpenTUI**, EasyCode provides a fast, interactive terminal experience while communicating with a cloud backend hosted on Railway.
 
 ---
 
-# **EasyCode** – Simplifying full-stack development, one command at a time.
+## Features
+
+* AI-powered coding assistant
+* Interactive terminal interface
+* Fast performance with Bun
+* Support for multiple AI models
+* Cloud-powered backend
+* TypeScript-first architecture
+* Real-time streaming AI responses
+
+---
+
+## Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/<your-username>/easycode.git
+cd easycode
+```
+
+### 2. Install dependencies
+
+```bash
+bun install
+```
+
+### 3. Configure your environment
+
+Copy the example environment file:
+
+```bash
+cp .env.example .env
+```
+
+Open the `.env` file and add your API keys.
+
+### 4. Link the CLI globally
+
+```bash
+bun run link:cli
+```
+
+You can now use EasyCode from any directory:
+
+```bash
+easycode
+```
+
+---
+
+## Updating EasyCode
+
+To update to the latest version:
+
+```bash
+git pull
+bun install
+bun run link:cli
+```
+
+---
+
+## 🛠️ Development
+
+### Running the CLI
+
+Start the CLI in development mode:
+
+```bash
+bun run dev:cli
+```
+
+### Running the Backend
+
+The production backend is hosted on Railway, so you only need to run the server locally if you're developing or modifying the backend.
+
+Before starting the server, update your `.env` file:
+
+```env
+API_URL=http://localhost:3000
+```
+
+Then start the backend:
+
+```bash
+bun run dev:server
+```
+---
+
+## 📁 Project Structure
+
+```text
+easycode/
+├── packages/
+│   ├── cli/        # Terminal application
+│   ├── server/     # Backend API
+│   └── shared/     # Shared types and utilities
+├── .env.example
+└── package.json
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions, feature requests, and bug reports are welcome.
+
+If you'd like to contribute:
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Open a Pull Request.
