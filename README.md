@@ -23,7 +23,7 @@ Built with **Bun**, **TypeScript**, and **OpenTUI**, EasyCode provides a fast, i
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/easycode.git
+git clone https://github.com/Lakshya123-cyber/easycode.git
 cd easycode
 ```
 
